@@ -47,7 +47,7 @@ LDmicro for Linux is built using MinGW C++ compiler.
 ### Building the Makefile
 In order to generate the Makefile that can be used to compile the project, simply run the following commands from a terminal in the project directory:
 ```
-cd /LDmicro/
+cd /LDmicroWt/ldmicro
 mkdir build
 cd build/
 cmake ..
