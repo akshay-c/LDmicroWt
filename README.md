@@ -36,6 +36,10 @@ _Note_: Be sure to run `sudo apt-get update` and `sudo apt-get upgrade` before r
   sudo make install
   sudo ldconfig
   ```
+  * WtDependencies:
+    ```
+    sudo apt-get install libboost-all-dev libhpdf-dev graphicsmagick libpango-1.0-0  libunwind-dev
+    ```
 
 # Building LDMicro for Linux
 LDmicro for Linux is built using MinGW C++ compiler.
