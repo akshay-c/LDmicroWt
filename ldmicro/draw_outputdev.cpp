@@ -53,7 +53,7 @@ void PaintWidget::paintEvent(Wt::WPaintDevice *device)
     painter.setBrush(Wt::WBrush(Wt::WColor(Wt::StandardColor::Blue)));
     painter.drawRect(0, 0, 100, 50);
     painter.end();
-    HCRDC Hcr = &painter;
+    /*HCRDC Hcr = &painter;
 
     // ok();
 
@@ -86,7 +86,7 @@ void PaintWidget::paintEvent(Wt::WPaintDevice *device)
         // cursor keys.
         /*if(((cy + thisHeight) >= (ScrollYOffset - 8)*POS_HEIGHT) &&
             (cy < (ScrollYOffset + rowsAvailable + 8)*POS_HEIGHT))*/
-        {
+      /*  {
             SetBkColor(DrawWindow, Hcr,
                 InSimulationMode ? HighlightColours.simBg :
                 HighlightColours.bg);
@@ -98,7 +98,7 @@ void PaintWidget::paintEvent(Wt::WPaintDevice *device)
             int yp = y; /*+ FONT_HEIGHT*(POS_HEIGHT/2) - 
                 POS_HEIGHT*FONT_HEIGHT*ScrollYOffset;*/
             
-            if(rung < 10) {
+        /*    if(rung < 10) {
                 char r[1] = { rung + '0' };
                 TextOut(DrawWindow, Hcr, 8 + FONT_WIDTH, yp, r, 1);
             } else {
@@ -158,10 +158,10 @@ void PaintWidget::paintEvent(Wt::WPaintDevice *device)
     FillRect(Hcr, &r, InSimulationMode ? BusLeftBrush : BusBrush);
     r.setLeft(POS_WIDTH*FONT_WIDTH*ColsAvailable + 32);
     r.setRight(POS_WIDTH*FONT_WIDTH*ColsAvailable + 32);*/
-    FillRect(Hcr, &r, InSimulationMode ? BusRightBus : BusBrush);
+    /*FillRect(Hcr, &r, InSimulationMode ? BusRightBus : BusBrush);
     // InvalidateRect(DrawWindow, NULL, FALSE);
  
-    CursorDrawn = FALSE;
+    CursorDrawn = FALSE;*/
 
     // ok();
     
@@ -174,7 +174,7 @@ void PaintWidget::resize(WSize size)
 
 void PaintWidget::resize(Wt::WLength width, Wt::WLength height)
 {
-    resize(width,height);
+    Wt::WPaintedWidget::resize(width,height);
 }
 
 WSize PaintWidget::size()
@@ -183,13 +183,14 @@ WSize PaintWidget::size()
     return PWSize;
 }
 
-PaintWidget::PaintWidget() : WPaintedWidget()
+PaintWidget::PaintWidget() : Wt::WPaintedWidget()
 {
     // resize(Wt::WLength(200),Wt::WLength(60));
     setStyleClass("Wt-PaintWidget");
     setAttributeValue("style", "width:100%; height:100%;");
-    // resize(Wt::WLength(100, Wt::LengthUnit::Percentage),
-    //     Wt::WLength(100, Wt::LengthUnit::Percentage));
+    repaint();
+    /*resize(Wt::WLength(100, Wt::LengthUnit::Percentage),
+        Wt::WLength(100, Wt::LengthUnit::Percentage));*/
 }
 
 //-----------------------------------------------------------------------------
@@ -210,7 +211,7 @@ double ScreenColsAvailable(void)
 //-------------------------------SyntaxHighlightingColours HighlightColours;----------------------------------------------
 static void DrawCharsToScreen(HCRDC Hcr, int cx, int cy, const char *str)
 {
-    if(cy < -2) return;
+    /*if(cy < -2) return;
 
     COLORREF prev;
     BOOL firstTime = TRUE;
@@ -278,5 +279,5 @@ static void DrawCharsToScreen(HCRDC Hcr, int cx, int cy, const char *str)
         }
 
         firstTime = FALSE;
-    }
+    }*/
 }

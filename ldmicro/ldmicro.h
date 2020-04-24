@@ -539,10 +539,10 @@ public:
 private:
 };
 
-class TopMenu : public Wt::WPopupMenu
+/*class TopMenu : public Wt::WPopupMenu
 {
 public:
-};
+};*/
 
 extern BOOL InSimulationMode;
 

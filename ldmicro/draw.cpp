@@ -947,7 +947,7 @@ cmp:
 BOOL DrawElement(HCRDC Hcr, int which, void *elem,
     int *cx, int *cy, BOOL poweredBefore)
 {
-    BOOL poweredAfter;
+    /*BOOL poweredAfter;
 
     int cx0 = *cx, cy0 = *cy;
     ElemLeaf *leaf = (ElemLeaf *)elem;
@@ -1064,7 +1064,7 @@ BOOL DrawElement(HCRDC Hcr, int which, void *elem,
 
 
     NormText(Hcr);
-    return poweredAfter;
+    return poweredAfter;*/
 }
 
 //-----------------------------------------------------------------------------

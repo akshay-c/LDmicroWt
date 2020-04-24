@@ -27,7 +27,7 @@ char CurrentCompileFile[MAX_PATH];
 // project file.
 PlcProgram Prog;
 
-PaintWidget*             DrawWindow;
+PaintWidget*            DrawWindow;
 
 WtMain::WtMain(const Wt::WEnvironment& env) : 
     Wt::WApplication(env)
@@ -56,7 +56,8 @@ WtMain::WtMain(const Wt::WEnvironment& env) :
     auto DrawWndContainer = Wt::cpp14::make_unique<Wt::WContainerWidget>();
     DrawWndContainer->setMinimumSize(Wt::WLength(100, Wt::LengthUnit::Percentage),
         Wt::WLength(70, Wt::LengthUnit::Percentage));
-    DrawWndContainer->addNew<PaintWidget>();
+    DrawWindow = DrawWndContainer->addNew<PaintWidget>();
+    DrawWindow->resize(Wt::WLength(700), Wt::WLength(300));
     PackBoxMenu->addWidget(std::move(DrawWndContainer));
 
     // Iolist->addStyleClass("tcontainer");

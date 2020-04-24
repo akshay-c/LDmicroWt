@@ -42,7 +42,7 @@ IF(UNIX)
     add_definitions ("-g")
     add_definitions(-D__UNIX__)
     add_definitions(-DLDLANG_EN)
-    add_definitions(-DQT_NO_KEYWORDS)
+    # add_definitions(-DQT_NO_KEYWORDS)
 
     execute_process(COMMAND lsb_release -cs
     OUTPUT_VARIABLE RELEASE_CODENAME
