@@ -168,7 +168,7 @@ endif()]]
                             iolist.cpp
                             maincontrols.cpp
                             ldmicro.cpp
-                            colorschemes.cpp
+                         ## colorschemes.cpp
                             draw_outputdev.cpp
                             draw.cpp
                             simulate.cpp

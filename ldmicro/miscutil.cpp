@@ -229,6 +229,15 @@ void NiceFont(HWID h)
     h->setFont(qtfont);*/
 
 //    SendMessage(h, WM_SETFONT, (WPARAM)MyNiceFont, TRUE);
+  /*  Wt::WFont wfont;
+    wfont.setFamily(Wt::FontFamily::Monospace, Wt::WString(MyNiceFont->lpszFace));
+    wfont.setSize(Wt::WLength(MyNiceFont->nHeight - 3));
+    //qtfont.setFixedPitch(TRUE);
+    wfont.setStyle(
+        MyNiceFont->fdwItalic ? Wt::FontStyle::Italic : Wt::FontStyle::Normal);
+    wfont.setWeight(
+        MyNiceFont->fnWeight == FW_BOLD ? Wt::FontWeight::Bold : Wt::FontWeight::Normal);
+    //h->setFont(qtfont);*/
 }
 
 //-----------------------------------------------------------------------------
@@ -247,17 +256,25 @@ void FixedFont(HWID h)
         MyFixedFont->fnWeight == FW_BOLD ? QFont::Bold : QFont::Normal);
     h->setFont(qtfont);*/
   //  SendMessage(h, WM_SETFONT, (WPARAM)MyFixedFont, TRUE);
+  /*  Wt::WFont wfont;
+    wfont.setFamily(Wt::FontFamily::Monospace, Wt::WString(MyFixedFont->lpszFace));
+    wfont.setSize(Wt::WLength(MyFixedFont->nHeight-3));
+   // qtfont.setFixedPitch(TRUE);
+    wfont.setStyle(MyFixedFont->fdwItalic ? Wt::FontStyle::Italic : Wt::FontStyle::Normal);
+    wfont.setWeight(
+        MyFixedFont->fnWeight == FW_BOLD ? Wt::FontWeight::Bold : Wt::FontWeight::Normal);*/
 }
+
 
 void SetFont(HWID h, HFONT f)
 {
-    /*QFont qtfont = h->font();
-    qtfont.setFamily(f->lpszFace);
-    qtfont.setPixelSize(f->nHeight - 3);
-    qtfont.setFixedPitch(TRUE);
-    qtfont.setStyle(f->fdwItalic ? QFont::StyleItalic : QFont::StyleNormal);
-    qtfont.setWeight(f->fnWeight == FW_BOLD ? QFont::Bold : QFont::Normal);
-    h->setFont(qtfont);*/
+    Wt::WFont wfont;
+    wfont.setFamily(Wt::FontFamily::Monospace, Wt::WString(f->lpszFace));
+    wfont.setSize(Wt::WLength(f->nHeight-3));
+    //qtfont.setFixedPitch(TRUE);
+    wfont.setStyle(f->fdwItalic ? Wt::FontStyle::Italic : Wt::FontStyle::Normal);
+    wfont.setWeight(f->fnWeight == FW_BOLD ? Wt::FontWeight::Bold : Wt::FontWeight::Normal);
+    //h->setFont(wfont);
 }
 
 //-----------------------------------------------------------------------------
@@ -265,9 +282,9 @@ void SetFont(HWID h, HFONT f)
 //-----------------------------------------------------------------------------
 void MakeDialogBoxClass(void)
 {
-/*    MyNiceFont = CreateFont(16, 0, 0, FW_REGULAR, FALSE, "Tahoma");
+    MyNiceFont = CreateFont(16, 0, 0, FW_REGULAR, FALSE, "Tahoma");
 
-    MyFixedFont = CreateFont(14, 0, 0, FW_REGULAR, FALSE, "Lucida Console");*/
+    MyFixedFont = CreateFont(14, 0, 0, FW_REGULAR, FALSE, "Lucida Console");
 }
 
 //-----------------------------------------------------------------------------

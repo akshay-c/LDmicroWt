@@ -536,6 +536,7 @@ class WtMain : public Wt::WApplication
 public:
 	WtMain(const Wt::WEnvironment& env);
 	void MakeMainWindowControls();
+    void MakeMainWindowMenus();
 private:
 };
 

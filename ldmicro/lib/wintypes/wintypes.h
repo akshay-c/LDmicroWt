@@ -17,6 +17,10 @@
 #define IMAGE_ICON      1
 #define LDMICRO_ICON    ":/ldmicro.ico"
 
+/// Font flags
+#define FW_REGULAR   0x00000001L
+#define FW_BOLD      0x00000002L
+
 /// Typedefs
 //typedef int64_t __int64;
 typedef bool BOOL;
@@ -63,7 +67,7 @@ typedef QMenu*      HMENU;
 typedef ITLIST      HITLIST;*/
 typedef Wt::WPainter*   HCRDC;
 typedef Wt::WWidget*    HWID;
-typedef Wt::WFont*      HFONT;
+//typedef Wt::WFont*      HFONT;
 /*typedef QWidget*    HWND;
 typedef QScrollArea* WM_SCROLL;
 */
@@ -88,5 +92,22 @@ typedef LONG_PTR LRESULT;
 
 size_t max(size_t A, size_t B);
 
+typedef struct FontTag {
+    int     nHeight;
+    int     nWidth;
+    int     nOrientation;
+    int     fnWeight;
+    DWORD   fdwItalic;
+    LPTSTR lpszFace;
+} *HFONT, FONT;
+
+HFONT CreateFont(
+    int     nHeight,
+    int     nWidth,
+    int     nOrientation,
+    int     fnWeight,
+    DWORD   fdwItalic,
+    LPCTSTR lpszFace);
 
 #endif
+

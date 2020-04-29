@@ -11,6 +11,7 @@ extern int SelectedGxAfterNextPaint;
 extern int SelectedGyAfterNextPaint;
 extern BOOL ScrollSelectedIntoViewAfterNextPaint;
 
+
 class PaintWidget : public Wt::WPaintedWidget
 {
 public:
@@ -43,3 +44,5 @@ static void DrawCharsToScreen(HCRDC Hcr, int cx, int cy, const char *str);
 double ScreenColsAvailable(void);
 
 #endif
+
+void SetSyntaxHighlightingColours(void)
