@@ -1,6 +1,7 @@
 #include "ldmicro.h"
 #include "iolist.h"
 #include "mcutable.h"
+#include "draw_outputdev.h"
 
 std::unique_ptr<WtMenuBar>  MenuBar;
 std::unique_ptr<WtIolist>   Iolist;
@@ -47,18 +48,9 @@ WtMain::WtMain(const Wt::WEnvironment& env) :
     useStyleSheet("resources/themes/default/wt.css");
     //MenuBar = root()->addNew<Wt::WNavigationBar>();
     //->addWidget(std::move(MenuBar));Wt::cpp14::make_unique<Wt::WNavigationBar>();
-    MenuBar = std::move(Wt::cpp14::make_unique<WtMenuBar>());
-    MenuBar->addStyleClass("main-nav");
-    MenuBar->setResponsive(true);
-    PackBoxMenu = Wt::cpp14::make_unique<Wt::WVBoxLayout>();
-    PackBoxMenu->addWidget(std::move(MenuBar));
-
-    auto DrawWndContainer = Wt::cpp14::make_unique<Wt::WContainerWidget>();
-    DrawWndContainer->setMinimumSize(Wt::WLength(100, Wt::LengthUnit::Percentage),
-        Wt::WLength(70, Wt::LengthUnit::Percentage));
-    DrawWindow = DrawWndContainer->addNew<PaintWidget>();
-    DrawWindow->resize(Wt::WLength(700), Wt::WLength(300));
-    PackBoxMenu->addWidget(std::move(DrawWndContainer));
+    MakeMainWindowMenus();
+    MakeDialogBoxClass();
+    //InitForDrawing();
 
     // Iolist->addStyleClass("tcontainer");
     // Iolist->setStyleClass("Wt-itemview Wt-tableview");
@@ -77,4 +69,25 @@ int main(int argc, char** argv)
     return Wt::WRun(argc, argv, [](const Wt::WEnvironment& env) {
       return std::make_unique<WtMain>(env);
     });
+}
+
+void WtMain::MakeMainWindowMenus()
+{
+    MenuBar = std::move(Wt::cpp14::make_unique<WtMenuBar>());
+    MenuBar->addStyleClass("main-nav");
+    MenuBar->setResponsive(true);
+    MakeDialogBoxClass();
+    PackBoxMenu = Wt::cpp14::make_unique<Wt::WVBoxLayout>();
+    PackBoxMenu->addWidget(std::move(MenuBar));
+}
+
+void InitForDrawing(void)
+{   
+    SetSyntaxHighlightingColours();
+    auto DrawWndContainer = Wt::cpp14::make_unique<Wt::WContainerWidget>();
+    DrawWndContainer->setMinimumSize(Wt::WLength(100, Wt::LengthUnit::Percentage),
+        Wt::WLength(70, Wt::LengthUnit::Percentage));
+    DrawWindow = DrawWndContainer->addNew<PaintWidget>();
+    DrawWindow->resize(Wt::WLength(700), Wt::WLength(300));
+    PackBoxMenu->addWidget(std::move(DrawWndContainer)); 
 }
